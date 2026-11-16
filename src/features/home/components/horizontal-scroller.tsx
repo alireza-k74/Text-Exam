@@ -22,7 +22,7 @@ export function HorizontalScroller({
       role="list"
       aria-label={ariaLabel}
       className={cn(
-        "flex gap-3 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory [&::-webkit-scrollbar]:hidden",
+        "flex min-w-0 gap-3 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory [&::-webkit-scrollbar]:hidden",
         className,
       )}
     >

@@ -1,13 +1,46 @@
 ---
-description: Responsive UI requirements for components and screens
-globs: src/**/*.{tsx,ts,css}
-alwaysApply: false
+description: Always-on responsive UI — mobile-first, no page overflow, all VIEWPORTS
+alwaysApply: true
 ---
 
-# Responsive UI
+# Responsive UI (always)
 
-- Mobile-first Tailwind classes; enhance at `sm` / `md` / `lg` / `xl` / `2xl`.
-- Use `container-page` / shared `Container` for page width.
-- Images: predictable aspect ratio; `max-w-full`.
-- Test mentally against VIEWPORTS in `~/lib/constants`.
-- Add Playwright coverage for new screens when layout is non-trivial.
+Every screen and component must stay usable and aligned on all devices. Treat this as a hard gate before shipping UI.
+
+## Required viewports
+
+Mentally (and when verifying) check at least the widths in `VIEWPORTS` / `BREAKPOINTS` from `~/lib/constants`:
+
+`320 · 375 · 430 · 768 · 1024 · 1280 · 1440 · 1920`
+
+## Hard rules
+
+1. **Mobile-first** — base styles for the smallest width; enhance with `sm` / `md` / `lg` / `xl` / `2xl`. Never design desktop-only then “shrink”.
+2. **No page horizontal overflow** — `documentElement.scrollWidth` must not exceed the viewport. Carousels/marquees stay inside `overflow-x-auto` or `overflow-x-clip` parents; never let fixed/`w-max` tracks widen the page (especially in RTL).
+3. **Width fluid, not fixed** — prefer `%` / `min()` / `max-w-*` / `flex-1` / `minmax(0, …)`. Avoid fixed pixel layout widths that force overflow under ~375px.
+4. **`min-w-0` on flex/grid children** that shrink or host scrollers. Page shells use `container-page` / `Container` (`max-width: 100%`, `min-width: 0`).
+5. **Logical properties only for layout that flips** — `ps`/`pe`, `ms`/`me`, `start`/`end`, `text-start`/`text-end`. No physical `left`/`right`/`ml`/`mr`/`pl`/`pr` for directional layout.
+6. **Images** — predictable aspect ratio; `max-w-full` / `sizes` that match breakpoints; no intrinsic width blowing the layout.
+7. **Crowded chrome** — on very narrow widths, collapse labels (`sr-only` / icon-only) rather than overflowing the header/nav.
+8. **One job per breakpoint change** — stack → row/grid only when space exists; keep touch targets usable (~44px).
+
+```tsx
+// ❌ BAD — fixed track widens the page; physical sides; no min-w-0
+<div className="flex">
+  <div className="flex w-max ml-4">…</div>
+</div>
+
+// ✅ GOOD — clipped/scrollable region; logical + min-w-0
+<section className="overflow-x-clip">
+  <div className="flex min-w-0">
+    <div className="min-w-0 flex-1 overflow-x-auto ps-4">…</div>
+  </div>
+</section>
+```
+
+## Checklist before finishing UI work
+
+- [ ] Looks correct at 320 and 768 (not only desktop)
+- [ ] No horizontal page scroll in RTL or LTR
+- [ ] Header/footer and carousels do not escape the viewport
+- [ ] Typography and spacing stay readable; no overlapping controls

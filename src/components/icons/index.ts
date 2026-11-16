@@ -1,3 +1,7 @@
+export {
+  AccentUnderlineIcon,
+  type AccentUnderlineIconProps,
+} from "./accent-underline-icon";
 export { ArrowLeftIcon, type ArrowLeftIconProps } from "./arrow-left-icon";
 export { ClockIcon, type ClockIconProps } from "./clock-icon";
 export {
@@ -18,4 +22,9 @@ export {
 } from "./scribble-underline-icon";
 export { SendIcon, type SendIconProps } from "./send-icon";
 export { TelegramIcon, type TelegramIconProps } from "./telegram-icon";
+export {
+  TitleMarkIcon,
+  type TitleMarkIconProps,
+} from "./title-mark-icon";
+export { TomanIcon, type TomanIconProps } from "./toman-icon";
 export { WhatsappIcon, type WhatsappIconProps } from "./whatsapp-icon";

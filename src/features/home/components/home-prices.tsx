@@ -164,12 +164,12 @@ function PriceCategoryRow({ category }: { category: PriceCategory }) {
       <div className="flex items-stretch gap-3 sm:gap-4">
         <CategoryBanner category={category} />
 
-        <div className="relative min-w-0 flex-1">
+        <div className="relative min-w-0 flex-1 overflow-x-clip">
           <div
             ref={scrollerRef}
             role="list"
             aria-label={category.title}
-            className="flex h-full gap-3 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory [&::-webkit-scrollbar]:hidden"
+            className="flex h-full min-w-0 gap-3 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory [&::-webkit-scrollbar]:hidden"
           >
             {category.vehicles.map((vehicle) => (
               <PriceVehicleCard key={vehicle.id} vehicle={vehicle} />
@@ -208,9 +208,9 @@ export function HomePrices() {
     <section
       id="prices"
       aria-labelledby="home-prices-heading"
-      className="bg-muted/40 border-border border-y py-10 md:py-14"
+      className="bg-muted/40 border-border overflow-x-clip border-t py-10 md:py-14"
     >
-      <Container>
+      <Container className="min-w-0">
         <SectionHeading
           id="home-prices-heading"
           title="قیمت روز"

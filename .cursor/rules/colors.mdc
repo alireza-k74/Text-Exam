@@ -1,0 +1,41 @@
+---
+description: No inline/raw colors — all colors live in tokens.css
+alwaysApply: true
+---
+
+# Colors — single source of truth
+
+## Source of truth
+
+- **Only file for color values:** `src/styles/tokens.css`
+- Primitives: `--color-*` (brand, neutrals, …)
+- Semantics: `--background`, `--foreground`, `--primary`, `--accent`, … (light on `:root`, dark under `.dark`)
+- UI consumes colors via **semantic Tailwind classes** (`bg-background`, `text-primary`, `border-border`, …), not raw values
+
+## Hard bans
+
+- Do **not** put colors in inline `style` (`style={{ color, background, borderColor, fill, stroke, … }}` with hex/rgb/oklch/named colors)
+- Do **not** hardcode hex / `rgb()` / `hsl()` / `oklch()` / named colors in JSX, TSX, or component CSS
+- Do **not** use arbitrary Tailwind color literals: `bg-[#…]`, `text-[rgb(…)]`, `border-[oklch(…)]`, `fill-[#…]`
+- Do **not** invent one-off color files or scatter Figma hexes in components
+
+```tsx
+// ❌ BAD
+style={{ color: "#016596", background: "oklch(0.9 0.02 240)" }}
+className="bg-[#f0f7ff] text-[rgb(1,101,150)]"
+className="bg-white text-black"
+
+// ✅ GOOD
+className="bg-muted text-primary"
+className="bg-background text-foreground"
+// gradients that must stay in className: only via token vars
+className="bg-[linear-gradient(to_bottom,var(--home-hero-from),var(--home-hero-to))]"
+```
+
+## When you need a new / changed color
+
+1. Add or update the value in `src/styles/tokens.css` (primitive and/or semantic; define **both** light and `.dark` for semantics).
+2. Wire it into Tailwind `@theme` if a new utility name is required.
+3. Use the semantic class / `var(--token-name)` in components.
+
+SVG `fill` / `stroke`: prefer `currentColor` + text color class, or `var(--…)` from tokens — never a raw hex in the icon file unless the token already exists and you reference it.

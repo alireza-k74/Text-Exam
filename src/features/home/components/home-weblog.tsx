@@ -128,9 +128,9 @@ export function HomeWeblog() {
     <section
       id="weblog"
       aria-labelledby="home-weblog-heading"
-      className="border-border border-t py-10 md:py-14"
+      className="overflow-x-clip py-10 md:py-14"
     >
-      <Container>
+      <Container className="min-w-0">
         <SectionHeading
           id="home-weblog-heading"
           title="وبلاگ و مقالات"

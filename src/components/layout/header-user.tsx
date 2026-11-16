@@ -21,13 +21,16 @@ export function HeaderUser() {
       <button
         type="button"
         onClick={() => setShowProfile(true)}
+        aria-label="ورود | ثبت نام"
         className={cn(
           buttonVariants({ variant: "outline", size: "default" }),
           "h-9 gap-1.5 rounded-md border-border px-2.5 text-foreground sm:px-3",
         )}
       >
         <LoginIcon />
-        <span className="text-xs sm:text-sm">ورود | ثبت نام</span>
+        <span className="text-xs max-[360px]:sr-only sm:text-sm">
+          ورود | ثبت نام
+        </span>
       </button>
     );
   }

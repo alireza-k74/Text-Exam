@@ -1,16 +1,60 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { Container } from "~/components/shared";
+import { Shape } from "~/components/ui";
 import { HOME_HEADER_CATEGORIES } from "~/features/home/data";
 import type { HomeHeaderCategory } from "~/features/home/types";
 import { cn } from "~/lib";
 
 import { HorizontalScroller } from "./horizontal-scroller";
 
-/** Story-style frame: large radius on start-start + end-end (diagonal). */
-const STORY_FRAME =
-  "rounded-ss-[3.25rem] rounded-se-xl rounded-ee-[3.25rem] rounded-es-xl";
+/** XD Story thumbnail size. */
+const STORY_WIDTH = 80;
+const STORY_HEIGHT = 88;
+/** Soft slant (viewBox %); keep mild so it isn’t too skewed. */
+const STORY_SLANT = 9;
+/** ~6px corner radius in 80×88 viewBox units. */
+const STORY_CORNER_R = 6;
+
+/**
+ * Rounded parallelogram (ذوزنقه): top-left highest, bottom-right lowest.
+ * Matches Figma/XD Story-container slant with a light corner radius.
+ */
+function storyContainerPath(slant = STORY_SLANT, r = STORY_CORNER_R): string {
+  const w = STORY_WIDTH;
+  const h = STORY_HEIGHT;
+  const s = (slant / 100) * h;
+  const topLen = Math.hypot(w, s);
+  const ux = w / topLen;
+  const uy = s / topLen;
+
+  const afterTlX = r * ux;
+  const afterTlY = r * uy;
+  const beforeTrX = w - r * ux;
+  const beforeTrY = s - r * uy;
+  const afterTrY = s + r;
+  const beforeBrY = h - r;
+  const afterBrX = w - r * ux;
+  const afterBrY = h - r * uy;
+  const beforeBlX = r * ux;
+  const beforeBlY = h - s + r * uy;
+  const afterBlY = h - s - r;
+
+  return [
+    `M 0 ${r}`,
+    `Q 0 0 ${afterTlX} ${afterTlY}`,
+    `L ${beforeTrX} ${beforeTrY}`,
+    `Q ${w} ${s} ${w} ${afterTrY}`,
+    `L ${w} ${beforeBrY}`,
+    `Q ${w} ${h} ${afterBrX} ${afterBrY}`,
+    `L ${beforeBlX} ${beforeBlY}`,
+    `Q 0 ${h - s} 0 ${afterBlY}`,
+    "Z",
+  ].join(" ");
+}
+
+const STORY_PATH = storyContainerPath();
+const STORY_VIEWBOX = `0 0 ${STORY_WIDTH} ${STORY_HEIGHT}`;
 
 function HeaderCategoryItem({
   category,
@@ -24,29 +68,35 @@ function HeaderCategoryItem({
       href={category.href}
       role="listitem"
       className={cn(
-        "group flex w-[5.25rem] shrink-0 snap-start flex-col items-center gap-2.5 sm:w-[5.75rem] md:w-auto md:min-w-0 md:flex-1 md:gap-3",
+        "group flex w-20 shrink-0 snap-start flex-col items-center gap-1.5",
         className,
       )}
     >
-      <div
+      <Shape
+        shape="custom"
+        customPath={STORY_PATH}
+        customViewBox={STORY_VIEWBOX}
+        width={STORY_WIDTH}
+        height={STORY_HEIGHT}
+        background="var(--muted)"
+        fit="cover"
         className={cn(
-          "relative aspect-[3/4] w-full overflow-hidden bg-muted",
-          "shadow-[0_8px_24px_-6px_rgba(15,23,42,0.28)]",
-          "transition-[box-shadow,transform] duration-200",
-          "group-hover:shadow-[0_12px_28px_-6px_rgba(15,23,42,0.34)]",
+          "drop-shadow-[0_6px_12px_rgba(15,23,42,0.22)]",
+          "transition-[filter,transform] duration-200",
+          "group-hover:drop-shadow-[0_10px_16px_rgba(15,23,42,0.3)]",
           "group-hover:-translate-y-0.5",
-          STORY_FRAME,
         )}
       >
         <Image
           src={category.imageSrc}
           alt={category.imageAlt}
-          fill
-          className="object-cover transition-transform duration-300 group-hover:scale-[1.04]"
-          sizes="(max-width: 768px) 92px, (max-width: 1280px) 10vw, 120px"
+          width={STORY_WIDTH}
+          height={STORY_HEIGHT}
+          className="size-full object-cover transition-transform duration-300 group-hover:scale-[1.04]"
+          sizes="80px"
         />
-      </div>
-      <span className="text-foreground group-hover:text-primary text-center text-xs leading-snug font-bold sm:text-[0.8125rem] md:text-sm">
+      </Shape>
+      <span className="text-foreground group-hover:text-primary text-center text-[0.6875rem] leading-snug font-normal sm:text-xs">
         {category.title}
       </span>
     </Link>
@@ -54,25 +104,20 @@ function HeaderCategoryItem({
 }
 
 /**
- * Quick category gallery above the home slider.
+ * Story-style category strip (used inside HomeHero).
  * Images ordered RTL (right → left) from `src/assets/headers` (1…9).
  */
 export function HomeHeaders() {
   return (
-    <section
-      aria-label="دسته‌بندی‌های سریع"
-      className="bg-background pt-4 pb-3 md:pt-6 md:pb-4"
-    >
-      <Container>
-        <HorizontalScroller
-          aria-label="دسته‌بندی‌های سریع"
-          className="gap-3 sm:gap-3.5 md:gap-4 md:overflow-visible md:pb-0 lg:gap-5"
-        >
-          {HOME_HEADER_CATEGORIES.map((category) => (
-            <HeaderCategoryItem key={category.id} category={category} />
-          ))}
-        </HorizontalScroller>
-      </Container>
-    </section>
+    <div aria-label="دسته‌بندی‌های سریع">
+      <HorizontalScroller
+        aria-label="دسته‌بندی‌های سریع"
+        className="justify-start gap-1 sm:justify-center sm:gap-5 md:overflow-visible md:pb-0"
+      >
+        {HOME_HEADER_CATEGORIES.map((category) => (
+          <HeaderCategoryItem key={category.id} category={category} />
+        ))}
+      </HorizontalScroller>
+    </div>
   );
 }

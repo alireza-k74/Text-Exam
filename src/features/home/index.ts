@@ -1,10 +1,9 @@
 export {
   HomeConsultation,
   HomeExchange,
-  HomeHeaders,
+  HomeHero,
   HomePrices,
   HomeServices,
-  HomeSlider,
   HomeWeblog,
 } from "./components";
 

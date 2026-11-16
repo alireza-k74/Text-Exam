@@ -180,16 +180,17 @@ export const HOME_SLIDES: HomeSlide[] = [
 
 export const HOME_SERVICES: HomeService[] = [
   {
-    id: "svc-shipping",
-    watermark: "Shipping",
-    title: "حمل و نقل",
+    id: "svc-cars",
+    watermark: "Cars",
+    title: "خودروهای سواری",
     description:
-      "شیپینگ کانتینری • ترانزیت زمینی • حمل ریلی • حمل داخلی ایران • درخواست چند قلم کالا",
+      "خودروهای موجود و سفارش اختصاصی • گالری و فیلتر • مشخصات کامل • قیمت نهایی • رزرو و پیش‌پرداخت",
     ctaLabel: SERVICE_CTA,
-    ctaHref: "#shipping",
-    imageSrc: shippingImg,
-    imageAlt: "حمل و نقل کانتینری و بین‌المللی",
+    ctaHref: "#cars",
+    imageSrc: carsImg,
+    imageAlt: "خودروهای سواری",
   },
+ 
   {
     id: "svc-truck",
     watermark: "Truck",
@@ -201,38 +202,17 @@ export const HOME_SERVICES: HomeService[] = [
     imageSrc: truckImg,
     imageAlt: "کشنده و کامیون",
   },
+ 
   {
-    id: "svc-cars",
-    watermark: "Cars",
-    title: "خودروهای سواری",
+    id: "svc-shipping",
+    watermark: "Shipping",
+    title: "حمل و نقل",
     description:
-      "خودروهای موجود و سفارش اختصاصی • گالری و فیلتر • مشخصات کامل • قیمت نهایی • رزرو و پیش‌پرداخت",
+      "شیپینگ کانتینری • ترانزیت زمینی • حمل ریلی • حمل داخلی ایران • درخواست چند قلم کالا",
     ctaLabel: SERVICE_CTA,
-    ctaHref: "#cars",
-    imageSrc: carsImg,
-    imageAlt: "خودروهای سواری",
-  },
-  {
-    id: "svc-orders",
-    watermark: "Orders",
-    title: "ثبت سفارش و امور ارزی",
-    description:
-      "ثبت سفارش متناسب با کالا • تأمین ارز • حواله • خدمات بانکی و پیگیری فرایند",
-    ctaLabel: SERVICE_CTA,
-    ctaHref: "#orders",
-    imageSrc: ordersImg,
-    imageAlt: "ثبت سفارش و امور ارزی",
-  },
-  {
-    id: "svc-storage",
-    watermark: "Storage",
-    title: "انبارداری و سردخانه گمرکی",
-    description:
-      "ارس • بازرگان • بندرعباس • محاسبه ظرفیت بر مبنای کامیون • برآورد متناسب با نوع کالا",
-    ctaLabel: SERVICE_CTA,
-    ctaHref: "#storage",
-    imageSrc: storageImg,
-    imageAlt: "انبارداری و سردخانه گمرکی",
+    ctaHref: "#shipping",
+    imageSrc: shippingImg,
+    imageAlt: "حمل و نقل کانتینری و بین‌المللی",
   },
   {
     id: "svc-import-export",
@@ -245,6 +225,29 @@ export const HOME_SERVICES: HomeService[] = [
     imageSrc: importExportImg,
     imageAlt: "واردات، صادرات و ترخیص",
   },
+
+  {
+    id: "svc-storage",
+    watermark: "Storage",
+    title: "انبارداری و سردخانه گمرکی",
+    description:
+      "ارس • بازرگان • بندرعباس • محاسبه ظرفیت بر مبنای کامیون • برآورد متناسب با نوع کالا",
+    ctaLabel: SERVICE_CTA,
+    ctaHref: "#storage",
+    imageSrc: storageImg,
+    imageAlt: "انبارداری و سردخانه گمرکی",
+  },
+  {
+    id: "svc-orders",
+    watermark: "Orders",
+    title: "ثبت سفارش و امور ارزی",
+    description:
+      "ثبت سفارش متناسب با کالا • تأمین ارز • حواله • خدمات بانکی و پیگیری فرایند",
+    ctaLabel: SERVICE_CTA,
+    ctaHref: "#orders",
+    imageSrc: ordersImg,
+    imageAlt: "ثبت سفارش و امور ارزی",
+  },
 ];
 
 const SAMPLE_TOMAN = "۹,۵۰۰,۰۰۰,۰۰۰";
@@ -256,7 +259,7 @@ const CAR_SPECS = ["۲۰۲۶", "برقی", "۲.۰ لیتر توربو", "اتو�
 const TRACTOR_SPECS = ["۲۰۲۶", "فول کالر", "اتومات"] as const;
 const TRACTOR_SPECS_FULL = ["۲۰۲۶", "فول آپشن", "فول کالر", "اتومات"] as const;
 
-export const HOME_PRICE_CATEGORIES: PriceCategory[] = [
+export     const HOME_PRICE_CATEGORIES: PriceCategory[] = [
   {
     id: "price-cars",
     tone: "cars",

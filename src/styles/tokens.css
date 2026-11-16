@@ -33,6 +33,8 @@
   --color-brand-gold-soft: #fef3d9;
   /* Figma slider scribble / timer / active thumb underline */
   --color-brand-cyan: #03aef4;
+  /* Soft frost on primary surfaces (e.g. تومان wordmark) */
+  --color-brand-frost: #dff3ff;
 
   /* ── Semantic colors (light) ── */
   --background: var(--color-white);
@@ -51,6 +53,7 @@
   --accent-foreground: var(--color-brand-ink);
   --accent-soft: var(--color-brand-gold-soft);
   --highlight: var(--color-brand-cyan);
+  --on-primary-soft: var(--color-brand-frost);
   --destructive: var(--color-danger);
   --border: var(--color-neutral-200);
   --input: var(--color-neutral-200);
@@ -77,6 +80,10 @@
   --footer-input: #1a1f26;
   --footer-border: oklch(1 0 0 / 0.14);
   --footer-watermark: oklch(1 0 0 / 0.045);
+
+  /* Home hero band (headers + slider) — soft top→bottom wash */
+  --home-hero-from: rgb(254, 254, 254);
+  --home-hero-to: rgb(224, 241, 251);
 
   /* ── Typography (Peyda via next/font → --font-peyda) ── */
   --font-sans: var(--font-peyda), Tahoma, Arial, sans-serif;
@@ -197,6 +204,7 @@
   --accent-foreground: var(--color-neutral-950);
   --accent-soft: color-mix(in srgb, var(--accent) 22%, var(--color-neutral-900));
   --highlight: #3bc8f5;
+  --on-primary-soft: var(--color-brand-frost);
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
@@ -214,6 +222,10 @@
   --sidebar-accent-foreground: var(--color-neutral-50);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: var(--color-neutral-500);
+
+  /* Home hero band */
+  --home-hero-from: var(--color-neutral-950);
+  --home-hero-to: color-mix(in srgb, var(--primary) 22%, var(--color-neutral-950));
 
   /* Footer stays branded dark in both themes */
   --footer: #23282e;

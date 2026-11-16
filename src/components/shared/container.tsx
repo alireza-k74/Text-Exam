@@ -13,5 +13,7 @@ export function Container({
   className,
   as: Comp = "div",
 }: ContainerProps) {
-  return <Comp className={cn("container-page", className)}>{children}</Comp>;
+  return (
+    <Comp className={cn("container-page min-w-0", className)}>{children}</Comp>
+  );
 }
