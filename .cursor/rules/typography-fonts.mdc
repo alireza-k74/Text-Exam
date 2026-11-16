@@ -1,0 +1,38 @@
+---
+description: Always use Peyda project fonts — no Geist/Inter/system UI stacks in UI
+alwaysApply: true
+---
+
+# Typography / fonts
+
+## Source of truth
+
+- UI typeface: **Peyda** (`FONT_SANS` in `~/lib/constants`).
+- Files live in `src/assets/fonts/` (Thin → Black).
+- Load via `fontPeyda` from `~/lib/fonts` (`next/font/local`, CSS var `--font-peyda`).
+- Root layout must apply `fontPeyda.variable` + `font-sans` on `<html>`.
+- Tokens: `--font-sans` / `--font-heading` in `src/styles/tokens.css` point at `var(--font-peyda)`.
+
+## Rules
+
+- Always use Tailwind semantic font classes: `font-sans`, `font-heading`. Body/UI text inherits from root `font-sans`.
+- Do **not** introduce Geist, Inter, Roboto, Arial-as-UI, or other display families for app UI.
+- Do **not** hardcode `font-family` with unrelated stacks in components.
+- Do **not** load Google Fonts / CDN fonts for the UI face.
+- Mono (`font-mono`) is for code only — system mono stack is fine; never replace Peyda for body/UI.
+
+```tsx
+// ❌ BAD
+import { GeistSans } from "geist/font/sans";
+className="font-[Inter] font-['Roboto']"
+
+// ✅ GOOD
+import { fontPeyda } from "~/lib";
+// root: className={cn(fontPeyda.variable, "font-sans")}
+className="font-sans font-semibold"
+className="font-heading"
+```
+
+## Weights
+
+Use Tailwind weight utilities that map to Peyda files: `font-thin` (100) … `font-black` (900). Prefer `font-normal` / `font-medium` / `font-semibold` / `font-bold` for UI.

@@ -1,0 +1,18 @@
+﻿# Dependencies
+node_modules
+pnpm-lock.yaml
+
+# Build / Next
+.next
+out
+build
+coverage
+
+# Test artifacts
+playwright-report
+test-results
+blob-report
+
+# Misc
+*.md
+AGENTS.md

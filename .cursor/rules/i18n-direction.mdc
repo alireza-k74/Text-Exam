@@ -1,0 +1,37 @@
+---
+description: Multi-lang defaults (fa/RTL) and always-respect RTL/LTR when coding
+alwaysApply: true
+---
+
+# i18n & document direction
+
+## Defaults
+
+- Default locale: **`fa`** (Persian). Root `<html lang>` must use `DEFAULT_LOCALE` from `~/lib/constants`.
+- Default direction: **`rtl`**. Root `<html dir>` and `DirectionProvider` use `DEFAULT_DIR`.
+- English (`en`) is a **supported** locale but **empty for now** — do not add English copy/strings until asked. Keep the multi-lang shape ready.
+
+## Multi-lang (required)
+
+- Architecture must stay locale-ready (`SUPPORTED_LOCALES`, locale → `dir` map).
+- Locale `fa` → `rtl`; locale `en` → `ltr`. Never hardcode only one language forever.
+- User-facing strings should eventually live in locale dictionaries; until i18n is wired, keep Persian as the only filled content.
+
+## RTL / LTR — always when coding UI
+
+- Prefer **logical** CSS/Tailwind: `ps`/`pe`, `ms`/`me`, `start`/`end`, `border-s`/`border-e`, `text-start`/`text-end`, `scroll-ps`/`scroll-pe`.
+- Never use physical `left`/`right`/`ml`/`mr`/`pl`/`pr`/`text-left`/`text-right` for layout that should flip with direction.
+- Directional icons (chevrons, arrows): flip with `rtl:` when needed.
+- Mirror checks mentally for both `dir="rtl"` and `dir="ltr"`.
+
+```tsx
+// ❌ BAD
+className="ml-4 pl-2 text-left left-0"
+
+// ✅ GOOD
+className="ms-4 ps-2 text-start start-0"
+```
+
+## Constants source of truth
+
+Use `DEFAULT_LOCALE`, `DEFAULT_DIR`, `SUPPORTED_LOCALES`, and `LOCALE_DIR` from `~/lib/constants` — do not invent ad-hoc lang/dir strings in layouts.

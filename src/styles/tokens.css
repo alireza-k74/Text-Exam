@@ -1,0 +1,240 @@
+/**
+ * Design tokens — centralized, Figma-ready CSS custom properties.
+ *
+ * Replace values here when extracting from Figma.
+ * Semantic tokens (background, foreground, primary…) map into Tailwind via @theme.
+ * Primitive/scale tokens support arbitrary Figma values without forcing a rigid scale.
+ */
+
+:root {
+  /* ── Color primitives (neutral defaults; swap with Figma values) ── */
+  --color-white: oklch(1 0 0);
+  --color-black: oklch(0 0 0);
+  --color-neutral-50: oklch(0.985 0 0);
+  --color-neutral-100: oklch(0.97 0 0);
+  --color-neutral-200: oklch(0.922 0 0);
+  --color-neutral-300: oklch(0.87 0 0);
+  --color-neutral-400: oklch(0.708 0 0);
+  --color-neutral-500: oklch(0.556 0 0);
+  --color-neutral-600: oklch(0.439 0 0);
+  --color-neutral-700: oklch(0.371 0 0);
+  --color-neutral-800: oklch(0.269 0 0);
+  --color-neutral-900: oklch(0.205 0 0);
+  --color-neutral-950: oklch(0.145 0 0);
+  --color-danger: oklch(0.577 0.245 27.325);
+
+  /* Brand primitives (Shojaei) */
+  --color-brand-50: #f0f7ff;
+  --color-brand-100: #e3eef8;
+  --color-brand-600: #016596;
+  --color-brand-700: #014f75;
+  --color-brand-ink: #0f172a;
+  --color-brand-gold: #f0a510;
+  --color-brand-gold-soft: #fef3d9;
+  /* Figma slider scribble / timer / active thumb underline */
+  --color-brand-cyan: #03aef4;
+
+  /* ── Semantic colors (light) ── */
+  --background: var(--color-white);
+  --foreground: var(--color-brand-ink);
+  --card: var(--color-white);
+  --card-foreground: var(--color-brand-ink);
+  --popover: var(--color-white);
+  --popover-foreground: var(--color-brand-ink);
+  --primary: var(--color-brand-600);
+  --primary-foreground: var(--color-white);
+  --secondary: var(--color-brand-100);
+  --secondary-foreground: var(--color-brand-ink);
+  --muted: var(--color-brand-50);
+  --muted-foreground: #5b6b7c;
+  --accent: var(--color-brand-gold);
+  --accent-foreground: var(--color-brand-ink);
+  --accent-soft: var(--color-brand-gold-soft);
+  --highlight: var(--color-brand-cyan);
+  --destructive: var(--color-danger);
+  --border: var(--color-neutral-200);
+  --input: var(--color-neutral-200);
+  --ring: var(--color-neutral-400);
+  --chart-1: var(--color-neutral-300);
+  --chart-2: var(--color-neutral-500);
+  --chart-3: var(--color-neutral-600);
+  --chart-4: var(--color-neutral-700);
+  --chart-5: var(--color-neutral-800);
+  --sidebar: var(--color-neutral-50);
+  --sidebar-foreground: var(--color-neutral-950);
+  --sidebar-primary: var(--color-neutral-900);
+  --sidebar-primary-foreground: var(--color-neutral-50);
+  --sidebar-accent: var(--color-neutral-100);
+  --sidebar-accent-foreground: var(--color-neutral-900);
+  --sidebar-border: var(--color-neutral-200);
+  --sidebar-ring: var(--color-neutral-400);
+
+  /* Footer (branded dark surface — always dark, even on light pages) */
+  --footer: #23282e;
+  --footer-foreground: #f6f7f9;
+  --footer-muted: oklch(1 0 0 / 0.68);
+  --footer-nav: #343a46;
+  --footer-input: #1a1f26;
+  --footer-border: oklch(1 0 0 / 0.14);
+  --footer-watermark: oklch(1 0 0 / 0.045);
+
+  /* ── Typography (Peyda via next/font → --font-peyda) ── */
+  --font-sans: var(--font-peyda), Tahoma, Arial, sans-serif;
+  --font-heading: var(--font-sans);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --leading-none: 1;
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+
+  --tracking-tighter: -0.05em;
+  --tracking-tight: -0.025em;
+  --tracking-normal: 0em;
+  --tracking-wide: 0.025em;
+
+  /* ── Spacing (4px base; extend with Figma values as needed) ── */
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* ── Radii ── */
+  --radius: 0.625rem;
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-full: 9999px;
+
+  /* ── Shadows ── */
+  --shadow-xs: 0 1px 2px oklch(0 0 0 / 0.05);
+  --shadow-sm: 0 1px 3px oklch(0 0 0 / 0.1), 0 1px 2px oklch(0 0 0 / 0.06);
+  --shadow-md: 0 4px 6px oklch(0 0 0 / 0.1), 0 2px 4px oklch(0 0 0 / 0.06);
+  --shadow-lg: 0 10px 15px oklch(0 0 0 / 0.1), 0 4px 6px oklch(0 0 0 / 0.05);
+  --shadow-xl: 0 20px 25px oklch(0 0 0 / 0.1), 0 8px 10px oklch(0 0 0 / 0.04);
+
+  /* ── Breakpoints (reference; Tailwind @theme also defines them) ── */
+  --breakpoint-sm: 40rem; /* 640px */
+  --breakpoint-md: 48rem; /* 768px */
+  --breakpoint-lg: 64rem; /* 1024px */
+  --breakpoint-xl: 80rem; /* 1280px */
+  --breakpoint-2xl: 90rem; /* 1440px */
+  --breakpoint-3xl: 120rem; /* 1920px */
+
+  /* ── Containers ── */
+  --container-sm: 40rem;
+  --container-md: 48rem;
+  --container-lg: 64rem;
+  --container-xl: 80rem;
+  --container-2xl: 90rem;
+  --container-content: min(100% - 2rem, var(--container-xl));
+
+  /* ── Z-index layers ── */
+  --z-base: 0;
+  --z-dropdown: 50;
+  --z-sticky: 100;
+  --z-overlay: 200;
+  --z-modal: 300;
+  --z-popover: 400;
+  --z-tooltip: 500;
+  --z-toast: 600;
+
+  /* ── Transitions ── */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-emphasized: cubic-bezier(0.2, 0, 0, 1);
+  --transition-colors:
+    color var(--duration-fast) var(--ease-standard),
+    background-color var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard);
+  --transition-transform: transform var(--duration-normal) var(--ease-standard);
+  --transition-opacity: opacity var(--duration-fast) var(--ease-standard);
+}
+
+.dark {
+  --background: var(--color-neutral-950);
+  --foreground: var(--color-neutral-50);
+  --card: var(--color-neutral-900);
+  --card-foreground: var(--color-neutral-50);
+  --popover: var(--color-neutral-900);
+  --popover-foreground: var(--color-neutral-50);
+  --primary: #3b9fc7;
+  --primary-foreground: var(--color-neutral-950);
+  --secondary: var(--color-neutral-800);
+  --secondary-foreground: var(--color-neutral-50);
+  --muted: var(--color-neutral-800);
+  --muted-foreground: var(--color-neutral-400);
+  --accent: #f0c94a;
+  --accent-foreground: var(--color-neutral-950);
+  --accent-soft: color-mix(in srgb, var(--accent) 22%, var(--color-neutral-900));
+  --highlight: #3bc8f5;
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: var(--color-neutral-500);
+  --chart-1: var(--color-neutral-300);
+  --chart-2: var(--color-neutral-500);
+  --chart-3: var(--color-neutral-600);
+  --chart-4: var(--color-neutral-700);
+  --chart-5: var(--color-neutral-800);
+  --sidebar: var(--color-neutral-900);
+  --sidebar-foreground: var(--color-neutral-50);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: var(--color-neutral-50);
+  --sidebar-accent: var(--color-neutral-800);
+  --sidebar-accent-foreground: var(--color-neutral-50);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: var(--color-neutral-500);
+
+  /* Footer stays branded dark in both themes */
+  --footer: #23282e;
+  --footer-foreground: #f6f7f9;
+  --footer-muted: oklch(1 0 0 / 0.68);
+  --footer-nav: #343a46;
+  --footer-input: #1a1f26;
+  --footer-border: oklch(1 0 0 / 0.14);
+  --footer-watermark: oklch(1 0 0 / 0.045);
+
+  --shadow-xs: 0 1px 2px oklch(0 0 0 / 0.3);
+  --shadow-sm: 0 1px 3px oklch(0 0 0 / 0.4);
+  --shadow-md: 0 4px 6px oklch(0 0 0 / 0.4);
+  --shadow-lg: 0 10px 15px oklch(0 0 0 / 0.45);
+  --shadow-xl: 0 20px 25px oklch(0 0 0 / 0.5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-normal: 0ms;
+    --duration-slow: 0ms;
+  }
+}

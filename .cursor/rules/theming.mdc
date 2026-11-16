@@ -1,0 +1,36 @@
+---
+description: Multi-theme system — default light, dark-ready semantic tokens
+alwaysApply: true
+---
+
+# Multi-theme
+
+## Defaults
+
+- Default theme: **`light`** (`DEFAULT_THEME` in `~/lib/constants`).
+- Dark mode must stay **architecturally ready** even when the UI still ships light-first.
+
+## Token rules
+
+- Colors go through **semantic tokens** in `src/styles/tokens.css` (`--background`, `--foreground`, `--primary`, …).
+- Light values live on `:root`; dark overrides live under `.dark`.
+- Components must use semantic Tailwind colors (`bg-background`, `text-foreground`, `border-border`, `bg-primary`, …), not raw hex/oklch in JSX.
+
+```tsx
+// ❌ BAD
+className="bg-white text-black dark:bg-zinc-950"
+
+// ✅ GOOD
+className="bg-background text-foreground"
+```
+
+## Coding for both themes
+
+- Prefer tokens that already flip under `.dark`; add `dark:` only for intentional theme-specific tweaks.
+- When adding a new semantic color, define **both** light (`:root`) and dark (`.dark`) values in `tokens.css`.
+- Do not assume dark is unavailable — layouts, contrast, borders, and shadows must remain valid if `.dark` is applied later.
+- Theme switching (when added) should toggle `class="dark"` on `<html>` and respect `DEFAULT_THEME = "light"`.
+
+## Constants source of truth
+
+Use `DEFAULT_THEME` and `SUPPORTED_THEMES` from `~/lib/constants`.

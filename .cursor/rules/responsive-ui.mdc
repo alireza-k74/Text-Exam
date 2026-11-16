@@ -1,0 +1,13 @@
+---
+description: Responsive UI requirements for components and screens
+globs: src/**/*.{tsx,ts,css}
+alwaysApply: false
+---
+
+# Responsive UI
+
+- Mobile-first Tailwind classes; enhance at `sm` / `md` / `lg` / `xl` / `2xl`.
+- Use `container-page` / shared `Container` for page width.
+- Images: predictable aspect ratio; `max-w-full`.
+- Test mentally against VIEWPORTS in `~/lib/constants`.
+- Add Playwright coverage for new screens when layout is non-trivial.

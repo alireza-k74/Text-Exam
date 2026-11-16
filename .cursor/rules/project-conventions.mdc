@@ -1,0 +1,53 @@
+---
+description: Project conventions — responsive UI, ~ imports, barrels, yarn, scripts
+alwaysApply: true
+---
+
+# Project Conventions
+
+## 1. Responsive & aligned on all devices
+
+- Write every screen/component mobile-first.
+- Layouts must work and stay aligned at least at: 320, 375, 430, 768, 1024, 1280, 1440, 1920.
+- No horizontal overflow, overlaps, or broken spacing.
+- Prefer Flexbox/Grid, logical properties (`ps`/`pe`, `ms`/`me`, `start`/`end`), and fluid typography/spacing.
+- Do not ship desktop-only layouts that merely shrink on mobile.
+
+## 2. Import alias: use `~`
+
+- Import from `~/...` (maps to `src/`).
+- Never use deep relative imports like `../../components/...`.
+- Same-folder relatives (`./button`) are OK inside a feature/ui folder.
+
+```tsx
+// ❌ BAD
+import { Button } from "../../components/ui/button";
+
+// ✅ GOOD
+import { Button } from "~/components/ui";
+```
+
+`@/` is kept only for shadcn tooling compatibility; prefer `~/` in app code.
+
+## 3. Barrel `index.ts` / `index.tsx` per folder
+
+- Each components/screens/features/hooks/lib folder must expose a public API via `index.ts` (or `index.tsx` if needed).
+- Import from the folder barrel, not deep file paths, when consuming outside that folder.
+
+```tsx
+// ❌ BAD
+import { SiteHeader } from "~/components/layout/site-header";
+
+// ✅ GOOD
+import { SiteHeader } from "~/components/layout";
+```
+
+## 4. Always use Yarn
+
+- Package manager is **yarn** only.
+- Do not use pnpm or npm for install/scripts in this repo.
+- Examples: `yarn install`, `yarn dev`, `yarn build`, `yarn test`.
+
+## 5. Keep useful package.json scripts
+
+Maintain at least: `dev`, `build`, `start`, `lint`, `typecheck`, `format`, `format:check`, `test`, `test:watch`, `test:e2e`, and related helpers.
