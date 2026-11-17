@@ -10,27 +10,45 @@ type SectionHeadingProps = {
   action?: ReactNode;
   /** Gold gradient bar under the title. */
   showUnderline?: boolean;
+  /** Default `start` (RTL-aware). Use `center` for centered section titles. */
+  align?: "start" | "center";
   className?: string;
 };
 
-/** Consistent title block for home sections (RTL start / right-aligned). */
+/** Consistent title block for home sections. */
 export function SectionHeading({
   id,
   title,
   description,
   action,
   showUnderline = false,
+  align = "start",
   className,
 }: SectionHeadingProps) {
+  const centered = align === "center";
+
   return (
     <div
       className={cn(
-        "mb-5 flex flex-col gap-2 sm:mb-6 sm:flex-row sm:items-end sm:justify-between",
+        "mb-5 flex flex-col gap-2 sm:mb-6",
+        centered
+          ? "items-center"
+          : "sm:flex-row sm:items-end sm:justify-between",
         className,
       )}
     >
-      <div className="min-w-0 space-y-1 text-start">
-        <div className="inline-flex flex-col items-start gap-1.5">
+      <div
+        className={cn(
+          "min-w-0 space-y-1",
+          centered ? "text-center" : "text-start",
+        )}
+      >
+        <div
+          className={cn(
+            "inline-flex flex-col gap-1.5",
+            centered ? "items-center" : "items-start",
+          )}
+        >
           <h2
             id={id}
             className="text-primary text-xl font-semibold tracking-tight md:text-2xl"
@@ -42,7 +60,12 @@ export function SectionHeading({
           ) : null}
         </div>
         {description ? (
-          <p className="text-muted-foreground max-w-2xl text-sm text-pretty md:text-base">
+          <p
+            className={cn(
+              "text-muted-foreground max-w-2xl text-sm text-pretty md:text-base",
+              centered && "mx-auto",
+            )}
+          >
             {description}
           </p>
         ) : null}

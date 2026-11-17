@@ -125,17 +125,17 @@ export function HomeConsultation() {
             <div
               className={cn(
                 "flex h-full min-w-0 flex-col items-start justify-center gap-5",
-                "px-5 py-6 sm:px-7 sm:py-8 md:gap-5 md:px-8 md:py-8 md:pe-14 lg:px-10 lg:pe-16",
+                "py-6 ps-0 pe-5 sm:py-8 sm:pe-7 md:gap-5 md:pe-14 lg:pe-16",
               )}
             >
               <div className="max-w-xl space-y-2.5 text-start md:space-y-3">
                 <h2
                   id="home-consultation-heading"
-                  className="font-heading text-xl font-bold tracking-tight text-pretty sm:text-2xl md:text-[1.75rem] md:leading-snug"
+                  className="font-heading text-4xl font-medium tracking-tight text-pretty leading-snug"
                 >
                   {title}
                 </h2>
-                <p className="text-primary-foreground/90 text-xs leading-relaxed text-pretty sm:text-sm">
+                <p className="text-footer-nav-muted text-xs leading-relaxed font-medium text-pretty">
                   {description}
                 </p>
               </div>

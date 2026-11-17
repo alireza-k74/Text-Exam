@@ -3,7 +3,7 @@
 import { Fragment } from "react";
 import { ChevronLeft } from "lucide-react";
 
-import { TomanIcon } from "~/components/icons";
+import { ExchangeDividerIcon, TomanIcon } from "~/components/icons";
 import { Shape } from "~/components/ui";
 import { EXCHANGE_RATES } from "~/features/home/data";
 import type { ExchangeRate } from "~/features/home/types";
@@ -52,9 +52,9 @@ function RateSegment({
           {index > 0 ? (
             <li
               aria-hidden
-              className="text-primary-foreground/50 shrink-0 select-none"
+              className="shrink-0 text-[color:var(--home-exchange-divider)] select-none"
             >
-              |
+              <ExchangeDividerIcon />
             </li>
           ) : null}
           {/* RTL: right→left = title + price + تومان icon */}
@@ -90,11 +90,23 @@ export function HomeExchange() {
       className="overflow-x-clip py-6 md:py-8"
     >
       <div className="relative min-w-0">
-        <div className="bg-accent text-accent-foreground absolute start-0 top-1/2 z-10 flex h-9 -translate-y-1/2 items-center gap-1.5 rounded-e-md px-3 text-sm font-bold md:h-10 md:gap-2 md:px-4 md:text-base">
-          <h2 id="home-exchange-heading" className="leading-none">
+        <div className="bg-accent text-[color:var(--home-exchange-label)] absolute start-2 top-1/2 z-10 flex h-9 -translate-y-1/2 items-center gap-1.5 rounded-md px-3 text-sm font-bold md:start-3 md:h-10 md:gap-2 md:px-4 md:text-base">
+          {/* Dark fade stuck to the left (inline-end) of the chip */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute top-1/2 start-full z-0 h-16 -translate-y-1/2 md:h-20"
+            style={{
+              width: "var(--home-exchange-edge-fade-width)",
+              background: "var(--home-exchange-edge-fade-gradient)",
+            }}
+          />
+          <h2 id="home-exchange-heading" className="relative z-[1] leading-none">
             نرخ ارز امروز
           </h2>
-          <ChevronLeft className="size-4 shrink-0 md:size-5" aria-hidden />
+          <ChevronLeft
+            className="relative z-[1] size-4 shrink-0 md:size-5"
+            aria-hidden
+          />
         </div>
 
         <Shape

@@ -13,7 +13,7 @@ type SiteLogoProps = Omit<ComponentPropsWithoutRef<typeof Link>, "href"> & {
 /** OCS / Osuli brand mark linking to home. */
 export function SiteLogo({
   className,
-  href = "/",
+  href = "#",
   tone,
   logoClassName,
   ...props

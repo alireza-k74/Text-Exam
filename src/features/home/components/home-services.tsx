@@ -64,14 +64,17 @@ function ServiceCard({ service }: { service: HomeService }) {
         <span
           aria-hidden
           className={cn(
-            "pointer-events-none absolute inset-x-0 top-[18%] z-0 flex justify-center select-none",
-            "sm:top-[16%]",
+            "pointer-events-none absolute inset-x-0 top-[8%] z-0 flex justify-center select-none",
+            "sm:top-[6%]",
           )}
         >
           <span
             className={cn(
-              "text-foreground/[0.08] max-w-full truncate text-[clamp(2.5rem,8vw,3.75rem)] leading-none font-bold tracking-tight",
+              "max-w-full truncate text-[clamp(2.5rem,8vw,3.75rem)] leading-none font-bold tracking-tight",
+              "text-foreground/[0.08]",
               "[text-shadow:0_1px_2px_rgb(15_23_42_/_0.12),0_2px_8px_rgb(255_255_255_/_0.9),0_8px_28px_rgb(255_255_255_/_0.65)]",
+              "[mask-image:var(--home-services-watermark-fade)] [-webkit-mask-image:var(--home-services-watermark-fade)]",
+              "[mask-size:100%_100%] [mask-repeat:no-repeat]",
             )}
           >
             {service.watermark}
@@ -115,7 +118,7 @@ function ServiceCard({ service }: { service: HomeService }) {
             "px-5 pt-10 pb-8 text-center sm:gap-5 sm:px-6 sm:pt-12 sm:pb-10",
           )}
         >
-          <div className="w-full space-y-2 text-[#343A46]">
+          <div className="w-full space-y-2 text-[color:var(--home-services-fg)]">
             <h3 className="text-base font-bold tracking-tight md:text-lg">
               {service.title}
             </h3>
@@ -127,8 +130,8 @@ function ServiceCard({ service }: { service: HomeService }) {
           <Link
             href={service.ctaHref}
             className={cn(
-              "hover:text-primary mt-auto inline-flex items-center justify-center gap-1 text-[#343A46]",
-              "text-xs font-medium transition-colors sm:text-sm",
+              "mt-auto inline-flex items-center justify-center gap-1 text-[color:var(--home-services-fg)]",
+              "hover:text-primary text-xs font-medium transition-colors sm:text-sm",
             )}
           >
             <span>{service.ctaLabel}</span>
@@ -154,6 +157,7 @@ export function HomeServices() {
           title="خدمات ما"
           description="راهکارهای تخصصی برای بازرگانان، شرکت‌ها و صاحبان کالا؛ برآورد اولیه همان لحظه"
           showUnderline
+          align="center"
           className="mb-8 sm:mb-10"
         />
 

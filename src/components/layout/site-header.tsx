@@ -38,7 +38,7 @@ export function SiteHeader() {
             <div className="flex min-w-0 items-center gap-2 sm:gap-5 md:gap-6">
               <SiteLogo />
               <Link
-                href="/"
+                href="#"
                 aria-label="خانه"
                 className={cn(navLinkClass, "text-foreground hover:text-primary")}
               >
@@ -49,7 +49,7 @@ export function SiteHeader() {
 
             <div className="flex shrink-0 items-center gap-1.5 sm:gap-4">
               <Link
-                href="/consultation"
+                href="#"
                 aria-label="مشاوره"
                 className={cn(navLinkClass, "text-primary hover:text-primary/80")}
               >

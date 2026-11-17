@@ -291,7 +291,7 @@ export function HomeWeblog() {
 
         <div className="mt-2 flex justify-center sm:mt-3">
           <Link
-            href="#weblog"
+            href="#"
             className="text-primary hover:text-primary/80 inline-flex items-center gap-1 text-sm font-medium transition-colors"
           >
             <span>موارد بیشتر</span>
