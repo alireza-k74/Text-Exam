@@ -81,9 +81,9 @@ function ServiceCard({ service }: { service: HomeService }) {
         <span
           aria-hidden
           className={cn(
-            "pointer-events-none absolute bottom-2 start-1/2 z-[1] -translate-x-1/2 rtl:translate-x-1/2",
+            "pointer-events-none absolute start-1/2 bottom-2 z-[1] -translate-x-1/2 rtl:translate-x-1/2",
             "h-[75%] w-[min(100%,19rem)] translate-y-[35%]",
-            "rounded-[50%] bg-background/95 blur-2xl",
+            "bg-background/95 rounded-[50%] blur-2xl",
             "sm:bottom-0 sm:h-[80%] sm:w-[min(100%,21rem)] sm:translate-y-[40%] sm:blur-3xl",
           )}
         />
@@ -153,10 +153,8 @@ export function HomeServices() {
           id="home-services-heading"
           title="خدمات ما"
           description="راهکارهای تخصصی برای بازرگانان، شرکت‌ها و صاحبان کالا؛ برآورد اولیه همان لحظه"
-          align="center"
-          showMark={false}
           showUnderline
-          className="[&_h2]:text-primary mb-8 items-center text-center sm:mb-10 sm:flex-col sm:items-center sm:justify-center [&_p]:mx-auto"
+          className="mb-8 sm:mb-10"
         />
 
         <ul className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-8">

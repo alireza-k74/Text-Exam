@@ -48,6 +48,7 @@
   --color-footer-foreground: var(--footer-foreground);
   --color-footer-muted: var(--footer-muted);
   --color-footer-nav: var(--footer-nav);
+  --color-footer-nav-muted: var(--footer-nav-muted);
   --color-footer-input: var(--footer-input);
   --color-footer-border: var(--footer-border);
   --color-footer-watermark: var(--footer-watermark);
@@ -171,6 +172,9 @@
 }
 @utility bg-footer-nav {
   background-color: var(--footer-nav);
+}
+@utility text-footer-nav-muted {
+  color: var(--footer-nav-muted);
 }
 @utility bg-footer-input {
   background-color: var(--footer-input);

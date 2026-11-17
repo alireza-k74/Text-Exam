@@ -1,4 +1,4 @@
-import type { SVGProps } from "react";
+import { useId, type SVGProps } from "react";
 
 import { cn } from "~/lib";
 
@@ -12,6 +12,8 @@ export function AccentUnderlineIcon({
   className,
   ...props
 }: AccentUnderlineIconProps) {
+  const gradientId = `accent-underline-${useId().replaceAll(":", "")}`;
+
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,11 +25,11 @@ export function AccentUnderlineIcon({
     >
       <path
         d="M0 2C0 0.895431 0.895431 0 2 0H22C23.1046 0 24 0.895431 24 2V2C24 3.10457 23.1046 4 22 4H2C0.89543 4 0 3.10457 0 2V2Z"
-        fill="url(#accent-underline-gradient)"
+        fill={`url(#${gradientId})`}
       />
       <defs>
         <linearGradient
-          id="accent-underline-gradient"
+          id={gradientId}
           x1="0"
           y1="2"
           x2="24"

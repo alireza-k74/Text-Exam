@@ -1,6 +1,11 @@
 export { Badge, badgeVariants } from "./badge";
 export { Button, buttonVariants } from "./button";
 export {
+  EmbossedText,
+  type EmbossedTextIntensity,
+  type EmbossedTextProps,
+} from "./embossed-text";
+export {
   Card,
   CardHeader,
   CardFooter,

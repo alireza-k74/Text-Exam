@@ -76,14 +76,27 @@
   --footer: #23282e;
   --footer-foreground: #f6f7f9;
   --footer-muted: oklch(1 0 0 / 0.68);
-  --footer-nav: #343a46;
-  --footer-input: #1a1f26;
+  --footer-nav: rgb(52, 58, 70);
+  --footer-nav-muted: rgb(177, 186, 200);
+  --footer-input: rgb(52, 58, 70);
   --footer-border: oklch(1 0 0 / 0.14);
-  --footer-watermark: oklch(1 0 0 / 0.045);
+  --footer-watermark: oklch(1 0 0 / 0.1);
+  /* Figma watermark wordmark gradients (always on dark footer) */
+  --footer-watermark-fill-from: var(--footer-nav);
+  --footer-watermark-fill-to: var(--footer);
+  --footer-watermark-stroke-from: #526077;
+  --footer-watermark-stroke-to: var(--footer);
 
   /* Home hero band (headers + slider) — soft top→bottom wash */
   --home-hero-from: rgb(254, 254, 254);
   --home-hero-to: rgb(224, 241, 251);
+
+  /* Home prices section */
+  --home-prices-bg: rgb(239, 249, 255);
+
+  /* Home weblog section + meta chip */
+  --home-weblog-card: rgb(246, 247, 249);
+  --home-weblog-meta: rgb(213, 218, 226);
 
   /* ── Typography (Peyda via next/font → --font-peyda) ── */
   --font-sans: var(--font-peyda), Tahoma, Arial, sans-serif;
@@ -227,14 +240,27 @@
   --home-hero-from: var(--color-neutral-950);
   --home-hero-to: color-mix(in srgb, var(--primary) 22%, var(--color-neutral-950));
 
+  /* Home prices section */
+  --home-prices-bg: color-mix(in srgb, var(--primary) 14%, var(--color-neutral-950));
+
+  /* Home weblog section + meta chip */
+  --home-weblog-card: var(--color-neutral-800);
+  --home-weblog-meta: var(--color-neutral-700);
+
   /* Footer stays branded dark in both themes */
   --footer: #23282e;
   --footer-foreground: #f6f7f9;
   --footer-muted: oklch(1 0 0 / 0.68);
-  --footer-nav: #343a46;
-  --footer-input: #1a1f26;
+  --footer-nav: rgb(52, 58, 70);
+  --footer-nav-muted: rgb(177, 186, 200);
+  --footer-input: rgb(52, 58, 70);
   --footer-border: oklch(1 0 0 / 0.14);
-  --footer-watermark: oklch(1 0 0 / 0.045);
+  --footer-watermark: oklch(1 0 0 / 0.1);
+  /* Figma watermark wordmark gradients (always on dark footer) */
+  --footer-watermark-fill-from: var(--footer-nav);
+  --footer-watermark-fill-to: var(--footer);
+  --footer-watermark-stroke-from: #526077;
+  --footer-watermark-stroke-to: var(--footer);
 
   --shadow-xs: 0 1px 2px oklch(0 0 0 / 0.3);
   --shadow-sm: 0 1px 3px oklch(0 0 0 / 0.4);

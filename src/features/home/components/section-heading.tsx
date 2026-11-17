@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import { AccentUnderlineIcon, TitleMarkIcon } from "~/components/icons";
+import { AccentUnderlineIcon } from "~/components/icons";
 import { cn } from "~/lib";
 
 type SectionHeadingProps = {
@@ -8,24 +8,18 @@ type SectionHeadingProps = {
   title: string;
   description?: string;
   action?: ReactNode;
-  /** Show brand title mark above the heading. Default true. */
-  showMark?: boolean;
   /** Gold gradient bar under the title. */
   showUnderline?: boolean;
-  /** Horizontal alignment of the mark + title stack. */
-  align?: "start" | "center";
   className?: string;
 };
 
-/** Consistent title block for home sections. */
+/** Consistent title block for home sections (RTL start / right-aligned). */
 export function SectionHeading({
   id,
   title,
   description,
   action,
-  showMark = true,
   showUnderline = false,
-  align = "start",
   className,
 }: SectionHeadingProps) {
   return (
@@ -35,24 +29,11 @@ export function SectionHeading({
         className,
       )}
     >
-      <div className="min-w-0 space-y-1">
-        <div
-          className={cn(
-            "inline-flex flex-col gap-1.5",
-            align === "center" ? "items-center" : "items-start",
-          )}
-        >
-          {showMark ? (
-            <TitleMarkIcon
-              className={cn(
-                "text-highlight",
-                align === "start" && "ms-0.5",
-              )}
-            />
-          ) : null}
+      <div className="min-w-0 space-y-1 text-start">
+        <div className="inline-flex flex-col items-start gap-1.5">
           <h2
             id={id}
-            className="text-foreground text-xl font-semibold tracking-tight md:text-2xl"
+            className="text-primary text-xl font-semibold tracking-tight md:text-2xl"
           >
             {title}
           </h2>

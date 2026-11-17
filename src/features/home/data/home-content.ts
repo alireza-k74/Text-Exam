@@ -130,8 +130,7 @@ export const HOME_SLIDES: HomeSlide[] = [
     title: "انجام کلیه امور گمرکی",
     /** RTL start → end */
     tags: ["حمل", "ترخیص", "انبارداری", "ثبت سفارش"],
-    description:
-      "هر قدم با یک کارشناس هماهنگ‌کننده و برآورد آنلاین همان لحظه",
+    description: "هر قدم با یک کارشناس هماهنگ‌کننده و برآورد آنلاین همان لحظه",
     ctaLabel: "مشاهده خدمات",
     ctaHref: "#services",
     imageSrc: slider1,
@@ -190,7 +189,7 @@ export const HOME_SERVICES: HomeService[] = [
     imageSrc: carsImg,
     imageAlt: "خودروهای سواری",
   },
- 
+
   {
     id: "svc-truck",
     watermark: "Truck",
@@ -202,7 +201,7 @@ export const HOME_SERVICES: HomeService[] = [
     imageSrc: truckImg,
     imageAlt: "کشنده و کامیون",
   },
- 
+
   {
     id: "svc-shipping",
     watermark: "Shipping",
@@ -259,7 +258,7 @@ const CAR_SPECS = ["۲۰۲۶", "برقی", "۲.۰ لیتر توربو", "اتو�
 const TRACTOR_SPECS = ["۲۰۲۶", "فول کالر", "اتومات"] as const;
 const TRACTOR_SPECS_FULL = ["۲۰۲۶", "فول آپشن", "فول کالر", "اتومات"] as const;
 
-export     const HOME_PRICE_CATEGORIES: PriceCategory[] = [
+export const HOME_PRICE_CATEGORIES: PriceCategory[] = [
   {
     id: "price-cars",
     tone: "cars",
@@ -417,8 +416,9 @@ export const WEBLOG_POSTS: WeblogPost[] = [
   {
     id: "post-truck",
     category: "کشنده و کامیون",
-    title: "کشنده‌های مرسدس بنز اکتروس در بازار",
-    excerpt: WEBLOG_EXCERPT,
+    title: "راهنمای واردات کشنده مرسدس بنز آکتروس",
+    excerpt:
+      "با شرایط واردات کشنده‌های مرسدس بنز آکتروس، الزامات قانونی، مدارک موردنیاز و مراحل ترخیص آشنا شوید تا مسیر ورود این خودروهای سنگین را بهتر بشناسید.",
     date: WEBLOG_DATE,
     dateTime: WEBLOG_DATE_TIME,
     author: WEBLOG_AUTHOR,
@@ -429,8 +429,9 @@ export const WEBLOG_POSTS: WeblogPost[] = [
   {
     id: "post-ship",
     category: "مراحل ترخیص کالا",
-    title: "آشنایی با مراحل ترخیص کالا از گمرک",
-    excerpt: WEBLOG_EXCERPT,
+    title: "آشنایی با مراحل ترخیص کالا",
+    excerpt:
+      "ترخیص اصولی کالا نیازمند شناخت مقررات گمرکی و تهیه اسناد موردنیاز است. با مراحل ترخیص آشنا شوید و موانع احتمالی را کاهش دهید.",
     date: WEBLOG_DATE,
     dateTime: WEBLOG_DATE_TIME,
     author: WEBLOG_AUTHOR,
@@ -442,12 +443,49 @@ export const WEBLOG_POSTS: WeblogPost[] = [
     id: "post-car",
     category: "خودروهای لوکس",
     title: "خودروهای لوکس پورشه در بازار",
-    excerpt: WEBLOG_EXCERPT,
+    excerpt:
+      "با جدیدترین مدل‌های پورشه، طراحی منحصربه‌فرد، فناوری‌های پیشرفته و مشخصات فنی این خودروهای لوکس آشنا شوید و نگاهی به ویژگی‌های متمایز آن‌ها داشته باشید.",
     date: WEBLOG_DATE,
     dateTime: WEBLOG_DATE_TIME,
     author: WEBLOG_AUTHOR,
     href: "#weblog",
     imageSrc: weblogCar,
     imageAlt: "خودروی لوکس پورشه",
+  },
+  {
+    id: "post-truck-2",
+    category: "کشنده و کامیون",
+    title: "نکات خرید کشنده دست‌دوم",
+    excerpt: WEBLOG_EXCERPT,
+    date: WEBLOG_DATE,
+    dateTime: WEBLOG_DATE_TIME,
+    author: WEBLOG_AUTHOR,
+    href: "#weblog",
+    imageSrc: weblogTruck,
+    imageAlt: "کشنده در نمایشگاه",
+  },
+  {
+    id: "post-ship-2",
+    category: "مراحل ترخیص کالا",
+    title: "مدارک لازم برای ترخیص خودرو",
+    excerpt: WEBLOG_EXCERPT,
+    date: WEBLOG_DATE,
+    dateTime: WEBLOG_DATE_TIME,
+    author: WEBLOG_AUTHOR,
+    href: "#weblog",
+    imageSrc: weblogShip,
+    imageAlt: "فرآیند ترخیص کالا",
+  },
+  {
+    id: "post-car-2",
+    category: "خودروهای لوکس",
+    title: "راهنمای واردات خودروهای لوکس",
+    excerpt: WEBLOG_EXCERPT,
+    date: WEBLOG_DATE,
+    dateTime: WEBLOG_DATE_TIME,
+    author: WEBLOG_AUTHOR,
+    href: "#weblog",
+    imageSrc: weblogCar,
+    imageAlt: "خودروی لوکس وارداتی",
   },
 ];

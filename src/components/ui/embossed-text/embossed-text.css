@@ -1,0 +1,53 @@
+/**
+ * Embossed / neumorphic text — dual opposing text-shadow.
+ * Offsets use `em` so the ridge scales with font size (large watermarks included).
+ * Tunable via --emboss-* CSS variables or intensity data attributes.
+ */
+.ui-embossed-text {
+  --emboss-light: rgb(255 255 255 / 0.14);
+  --emboss-dark: rgb(0 0 0 / 0.55);
+  --emboss-ox: 0.045em;
+  --emboss-oy: 0.05em;
+  --emboss-blur: 0.02em;
+
+  text-shadow:
+    calc(var(--emboss-ox) * -1) calc(var(--emboss-oy) * -1) var(--emboss-blur)
+      var(--emboss-light),
+    var(--emboss-ox) var(--emboss-oy) var(--emboss-blur) var(--emboss-dark);
+}
+
+.ui-embossed-text[data-intensity="medium"] {
+  --emboss-light: rgb(255 255 255 / 0.18);
+  --emboss-dark: rgb(0 0 0 / 0.62);
+  --emboss-ox: 0.055em;
+  --emboss-oy: 0.06em;
+  --emboss-blur: 0.03em;
+}
+
+.ui-embossed-text[data-intensity="strong"] {
+  --emboss-light: rgb(255 255 255 / 0.22);
+  --emboss-dark: rgb(0 0 0 / 0.72);
+  --emboss-ox: 0.07em;
+  --emboss-oy: 0.075em;
+  --emboss-blur: 0.04em;
+}
+
+.ui-embossed-text[data-disabled="true"] {
+  text-shadow: none;
+}
+
+/* Slightly stronger ridge when `.dark` is on an ancestor */
+.dark .ui-embossed-text:not([data-disabled="true"]) {
+  --emboss-light: rgb(255 255 255 / 0.16);
+  --emboss-dark: rgb(0 0 0 / 0.6);
+}
+
+.dark .ui-embossed-text[data-intensity="medium"]:not([data-disabled="true"]) {
+  --emboss-light: rgb(255 255 255 / 0.2);
+  --emboss-dark: rgb(0 0 0 / 0.68);
+}
+
+.dark .ui-embossed-text[data-intensity="strong"]:not([data-disabled="true"]) {
+  --emboss-light: rgb(255 255 255 / 0.24);
+  --emboss-dark: rgb(0 0 0 / 0.78);
+}

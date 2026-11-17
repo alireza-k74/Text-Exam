@@ -6,7 +6,7 @@ import { ChevronLeft } from "lucide-react";
 import { useRef } from "react";
 
 import { Container } from "~/components/shared";
-import { Button } from "~/components/ui";
+import { Button, Shape } from "~/components/ui";
 import { HOME_PRICE_CATEGORIES } from "~/features/home/data";
 import type {
   PriceCategory,
@@ -16,6 +16,48 @@ import type {
 import { cn } from "~/lib";
 
 import { SectionHeading } from "./section-heading";
+
+/** Mild top slant: physical right higher, left lower. */
+const PRICES_TOP_SLANT = 2.5;
+const PRICES_CORNER_R = 2.5;
+const PRICES_W = 200;
+const PRICES_H = 100;
+const PRICES_VIEWBOX = `0 0 ${PRICES_W} ${PRICES_H}`;
+
+/**
+ * Prices panel silhouette: rounded corners,
+ * top-right higher than top-left.
+ */
+function pricesPanelPath(
+  slant = PRICES_TOP_SLANT,
+  r = PRICES_CORNER_R,
+): string {
+  const w = PRICES_W;
+  const h = PRICES_H;
+  const topLeft = slant;
+  const topRight = 0;
+  const slope = (topLeft - topRight) / w;
+
+  const afterTlX = r;
+  const afterTlY = topLeft - slope * r;
+  const beforeTrX = w - r;
+  const beforeTrY = topLeft - slope * (w - r);
+
+  return [
+    `M 0 ${h - r}`,
+    `L 0 ${topLeft + r}`,
+    `Q 0 ${topLeft} ${afterTlX} ${afterTlY}`,
+    `L ${beforeTrX} ${beforeTrY}`,
+    `Q ${w} ${topRight} ${w} ${topRight + r}`,
+    `L ${w} ${h - r}`,
+    `Q ${w} ${h} ${w - r} ${h}`,
+    `L ${r} ${h}`,
+    `Q 0 ${h} 0 ${h - r}`,
+    "Z",
+  ].join(" ");
+}
+
+const PRICES_PANEL_PATH = pricesPanelPath();
 
 function TomanIcon({ className }: { className?: string }) {
   return (
@@ -40,7 +82,7 @@ function PriceVehicleCard({ vehicle }: { vehicle: PriceVehicle }) {
   return (
     <article
       role="listitem"
-      className="bg-card border-border shadow-sm flex w-[13rem] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border sm:w-[14.5rem]"
+      className="bg-card border-border flex w-[13rem] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border shadow-sm sm:w-[14.5rem]"
     >
       <div className="flex items-start justify-between gap-2 px-3 pt-3 pb-1">
         <h4 className="text-foreground min-w-0 flex-1 text-sm leading-snug font-semibold">
@@ -110,7 +152,7 @@ function CategoryBanner({ category }: { category: PriceCategory }) {
   return (
     <div
       className={cn(
-        "relative flex h-full min-h-56 w-[7.25rem] shrink-0 flex-col overflow-hidden rounded-2xl sm:min-h-60 sm:w-36 md:w-40",
+        "relative flex h-full min-h-72 w-[7.25rem] shrink-0 flex-col overflow-hidden rounded-2xl sm:min-h-80 sm:w-36 md:w-40",
         tone.shell,
       )}
     >
@@ -169,7 +211,7 @@ function PriceCategoryRow({ category }: { category: PriceCategory }) {
             ref={scrollerRef}
             role="list"
             aria-label={category.title}
-            className="flex h-full min-w-0 gap-3 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory [&::-webkit-scrollbar]:hidden"
+            className="flex h-full min-w-0 snap-x snap-mandatory [scrollbar-width:none] gap-3 overflow-x-auto pb-1 [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
           >
             {category.vehicles.map((vehicle) => (
               <PriceVehicleCard key={vehicle.id} vehicle={vehicle} />
@@ -208,21 +250,40 @@ export function HomePrices() {
     <section
       id="prices"
       aria-labelledby="home-prices-heading"
-      className="bg-muted/40 border-border overflow-x-clip border-t py-10 md:py-14"
+      className="overflow-x-clip py-10 md:py-14"
     >
       <Container className="min-w-0">
-        <SectionHeading
-          id="home-prices-heading"
-          title="قیمت روز"
-          description="خودروهای موجود به دلار و کشنده‌های وارداتی به یورو، هر دو با معادل تومانی"
-          className="mb-8 sm:mb-10"
-        />
+        <Shape
+          shape="custom"
+          customPath={PRICES_PANEL_PATH}
+          customViewBox={PRICES_VIEWBOX}
+          width="100%"
+          height="auto"
+          aspectRatio="auto"
+          background="var(--home-prices-bg)"
+          fit="fill"
+          clipContent
+          className={cn(
+            "w-full min-w-0",
+            "[&_.ui-shape__content]:items-stretch [&_.ui-shape__content]:justify-start [&_.ui-shape__content]:text-start",
+          )}
+        >
+          <div className="flex w-full min-w-0 flex-col px-4 pt-12 pb-12 sm:px-6 sm:pt-14 sm:pb-14 md:px-8 md:pt-16 md:pb-16">
+            <SectionHeading
+              id="home-prices-heading"
+              title="قیمت روز"
+              description="خودروهای موجود به دلار و کشنده‌های وارداتی به یورو، هر دو با معادل تومانی"
+              showUnderline
+              className="mb-8 sm:mb-10"
+            />
 
-        <div className="flex flex-col gap-8 md:gap-10">
-          {HOME_PRICE_CATEGORIES.map((category) => (
-            <PriceCategoryRow key={category.id} category={category} />
-          ))}
-        </div>
+            <div className="flex flex-col gap-8 md:gap-10">
+              {HOME_PRICE_CATEGORIES.map((category) => (
+                <PriceCategoryRow key={category.id} category={category} />
+              ))}
+            </div>
+          </div>
+        </Shape>
       </Container>
     </section>
   );
