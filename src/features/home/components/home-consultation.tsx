@@ -103,7 +103,8 @@ export function HomeConsultation() {
         <div
           className={cn(
             "@container/consult flex w-full min-w-0 flex-col gap-4",
-            "md:flex-row md:items-center md:gap-0",
+            /* Side-by-side from lg — md row was too narrow for title + CTA */
+            "lg:flex-row lg:items-center lg:gap-0",
             "overflow-x-clip",
           )}
         >
@@ -117,25 +118,29 @@ export function HomeConsultation() {
             fit="fill"
             className={cn(
               "relative z-0 flex w-full min-w-0 flex-col justify-center",
-              "min-h-48 md:min-h-0 md:w-[55%] md:max-w-[55%] md:shrink md:grow-0",
-              // ~88% of image height (image = 45% row × XD aspect)
-              "md:h-[calc(0.45*100cqi*255.1/574*0.88)]",
+              "min-h-48 lg:w-[55%] lg:max-w-[55%] lg:shrink lg:grow-0",
+              /* Floor ≈ image height; never clip — grow with content */
+              "lg:min-h-[calc(0.45*100cqi*255.1/574*0.88)]",
+              "[&_.ui-shape__content]:items-stretch [&_.ui-shape__content]:justify-start [&_.ui-shape__content]:text-start",
             )}
           >
             <div
               className={cn(
-                "flex h-full min-w-0 flex-col items-start justify-center gap-5",
-                "py-6 ps-0 pe-5 sm:py-8 sm:pe-7 md:gap-5 md:pe-14 lg:pe-16",
+                "flex h-full min-w-0 flex-col items-start justify-center gap-4 sm:gap-5",
+                /* ps clears parallelogram slant (PANEL_SLANT/PANEL_W = 4%) */
+                "py-7 pe-5 ps-[max(1.25rem,calc(4%+0.75rem))]",
+                "sm:py-8 sm:pe-7 sm:ps-[max(1.5rem,calc(4%+1rem))]",
+                "lg:gap-5 lg:pe-14 lg:ps-[max(2rem,calc(4%+1.25rem))] xl:pe-16",
               )}
             >
               <div className="max-w-xl space-y-2.5 text-start md:space-y-3">
                 <h2
                   id="home-consultation-heading"
-                  className="font-heading text-4xl font-medium tracking-tight text-pretty leading-snug"
+                  className="font-heading text-2xl leading-snug font-medium tracking-tight text-pretty sm:text-3xl lg:text-4xl"
                 >
                   {title}
                 </h2>
-                <p className="text-footer-nav-muted text-xs leading-relaxed font-medium text-pretty">
+                <p className="text-footer-nav-muted text-xs leading-relaxed font-medium text-pretty sm:text-sm">
                   {description}
                 </p>
               </div>
@@ -144,7 +149,7 @@ export function HomeConsultation() {
                 href={ctaHref}
                 className={cn(
                   buttonVariants({ variant: "secondary", size: "xl" }),
-                  "bg-background text-foreground hover:bg-background/90 w-fit max-w-full font-semibold shadow-sm",
+                  "bg-background text-foreground hover:bg-background/90 w-fit max-w-full shrink-0 font-semibold shadow-sm",
                 )}
               >
                 <span className="truncate">{ctaLabel}</span>
@@ -162,8 +167,8 @@ export function HomeConsultation() {
             fit="cover"
             className={cn(
               "relative z-10 w-full min-w-0 self-center",
-              // Pull over the panel’s physical-left edge
-              "md:-ms-12 md:w-[45%] md:max-w-[45%] md:shrink md:grow-0 lg:-ms-16",
+              /* Pull over the panel’s end edge (overlap) */
+              "lg:-ms-12 lg:w-[45%] lg:max-w-[45%] lg:shrink lg:grow-0 xl:-ms-16",
             )}
           >
             <div className="relative size-full min-h-0 min-w-0">
@@ -172,7 +177,7 @@ export function HomeConsultation() {
                 alt={imageAlt}
                 fill
                 className="object-cover"
-                sizes="(max-width: 768px) 100vw, 45vw"
+                sizes="(max-width: 1024px) 100vw, 45vw"
                 priority={false}
               />
             </div>
