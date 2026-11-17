@@ -81,9 +81,9 @@ function HeaderCategoryItem({
         background="var(--muted)"
         fit="cover"
         className={cn(
-          "drop-shadow-[0_6px_12px_rgba(15,23,42,0.22)]",
+          "[filter:var(--home-headers-story-filter)]",
           "transition-[filter,transform] duration-200",
-          "group-hover:drop-shadow-[0_10px_16px_rgba(15,23,42,0.3)]",
+          "group-hover:[filter:var(--home-headers-story-filter-hover)]",
           "group-hover:-translate-y-0.5",
         )}
       >

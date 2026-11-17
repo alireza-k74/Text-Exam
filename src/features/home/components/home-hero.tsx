@@ -171,7 +171,7 @@ function SlideCopy({
 /**
  * Figma SliderThumb — Shape custom path (left top lower than right).
  * Equal base height; selected grows taller. Timer bar advances slides.
- * Inactive: white; active: brand blue rgb(1, 101, 150).
+ * Inactive: white; active: brand blue #016596.
  */
 function SliderThumb({
   label,

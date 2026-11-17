@@ -76,9 +76,9 @@
   --footer: #23282e;
   --footer-foreground: #f6f7f9;
   --footer-muted: oklch(1 0 0 / 0.68);
-  --footer-nav: rgb(52, 58, 70);
-  --footer-nav-muted: rgb(177, 186, 200);
-  --footer-input: rgb(52, 58, 70);
+  --footer-nav: #343a46;
+  --footer-nav-muted: #b1bac8;
+  --footer-input: #343a46;
   --footer-border: oklch(1 0 0 / 0.14);
   --footer-watermark: oklch(1 0 0 / 0.1);
   /* Figma watermark wordmark gradients (always on dark footer) */
@@ -88,12 +88,17 @@
   --footer-watermark-stroke-to: var(--footer);
 
   /* Home hero band (headers + slider) — soft top→bottom wash */
-  --home-hero-from: rgb(254, 254, 254);
-  --home-hero-to: rgb(224, 241, 251);
+  --home-hero-from: #fefefe;
+  --home-hero-to: #e0f1fb;
+  /* Story chip drop-shadows (alpha stays rgb) */
+  --home-headers-story-filter: drop-shadow(0 6px 12px rgb(15 23 42 / 0.22));
+  --home-headers-story-filter-hover: drop-shadow(
+    0 10px 16px rgb(15 23 42 / 0.3)
+  );
 
   /* Home exchange ticker — label on accent chip + rate separators */
-  --home-exchange-label: rgb(143, 69, 17);
-  --home-exchange-divider: rgb(134, 149, 170);
+  --home-exchange-label: #8f4511;
+  --home-exchange-divider: #8695aa;
   /* Soft dark wash stuck to inline-end (left in RTL) of the label chip */
   --home-exchange-edge-fade-width: 5.5rem;
   --home-exchange-edge-fade-gradient: linear-gradient(
@@ -105,13 +110,13 @@
   );
 
   /* Home prices section */
-  --home-prices-bg: rgb(239, 249, 255);
-  --home-prices-banner-cars: rgb(134, 149, 170);
-  --home-prices-banner-tractors: rgb(47, 195, 255);
-  --home-prices-banner-accent-cars: rgb(100, 116, 139);
-  --home-prices-banner-accent-tractors: rgb(3, 174, 244);
-  --home-prices-card-btn-border: rgb(213, 218, 226);
-  --home-prices-card-btn-fg: rgb(58, 67, 82);
+  --home-prices-bg: #eff9ff;
+  --home-prices-banner-cars: #8695aa;
+  --home-prices-banner-tractors: #2fc3ff;
+  --home-prices-banner-accent-cars: #64748b;
+  --home-prices-banner-accent-tractors: #03aef4;
+  --home-prices-card-btn-border: #d5dae2;
+  --home-prices-card-btn-fg: #3a4352;
   /* Soft white wash from physical left — responsive width */
   --home-prices-edge-fade-width: 10%;
   --home-prices-edge-fade-gradient: linear-gradient(
@@ -121,9 +126,10 @@
     rgb(255 255 255 / 0) 60%
   );
 
-  /* Home services — card copy + CTA */
-  --home-services-fg: rgb(52, 58, 70);
-  /* watermark fades in from bottom → up */
+  /* Home services — card fill + copy + CTA */
+  --home-services-card: #eceef2;
+  --home-services-fg: #343a46;
+  /* watermark fades in from bottom → up (alpha stops stay rgb) */
   --home-services-watermark-fade: linear-gradient(
     to top,
     transparent 0%,
@@ -132,10 +138,13 @@
     rgb(0 0 0 / 0.75) 65%,
     #000 85%
   );
+  --home-services-watermark-shadow:
+    0 1px 2px rgb(15 23 42 / 0.12), 0 2px 8px rgb(255 255 255 / 0.9),
+    0 8px 28px rgb(255 255 255 / 0.65);
 
   /* Home weblog section + meta chip */
-  --home-weblog-card: rgb(246, 247, 249);
-  --home-weblog-meta: rgb(213, 218, 226);
+  --home-weblog-card: #f6f7f9;
+  --home-weblog-meta: #d5dae2;
 
   /* ── Typography (Peyda via next/font → --font-peyda) ── */
   --font-sans: var(--font-peyda), Tahoma, Arial, sans-serif;
@@ -288,8 +297,8 @@
   );
 
   /* Home exchange ticker — label on accent chip + rate separators */
-  --home-exchange-label: rgb(143, 69, 17);
-  --home-exchange-divider: rgb(134, 149, 170);
+  --home-exchange-label: #8f4511;
+  --home-exchange-divider: #8695aa;
   /* Soft dark wash stuck to inline-end (left in RTL) of the label chip */
   --home-exchange-edge-fade-width: 5.5rem;
   --home-exchange-edge-fade-gradient: linear-gradient(
@@ -306,12 +315,12 @@
     var(--primary) 14%,
     var(--color-neutral-950)
   );
-  --home-prices-banner-cars: rgb(134, 149, 170);
-  --home-prices-banner-tractors: rgb(47, 195, 255);
-  --home-prices-banner-accent-cars: rgb(100, 116, 139);
-  --home-prices-banner-accent-tractors: rgb(3, 174, 244);
-  --home-prices-card-btn-border: rgb(100, 116, 139);
-  --home-prices-card-btn-fg: rgb(213, 218, 226);
+  --home-prices-banner-cars: #8695aa;
+  --home-prices-banner-tractors: #2fc3ff;
+  --home-prices-banner-accent-cars: #64748b;
+  --home-prices-banner-accent-tractors: #03aef4;
+  --home-prices-card-btn-border: #64748b;
+  --home-prices-card-btn-fg: #d5dae2;
   --home-prices-edge-fade-width: 5%;
   --home-prices-edge-fade-gradient: linear-gradient(
     to right,
@@ -320,9 +329,10 @@
     transparent 100%
   );
 
-  /* Home services — card copy + CTA */
-  --home-services-fg: rgb(213, 218, 226);
-  /* watermark fades in from bottom → up */
+  /* Home services — card fill + copy + CTA */
+  --home-services-card: var(--color-neutral-800);
+  --home-services-fg: #d5dae2;
+  /* watermark fades in from bottom → up (alpha stops stay rgb) */
   --home-services-watermark-fade: linear-gradient(
     to top,
     transparent 0%,
@@ -340,9 +350,9 @@
   --footer: #23282e;
   --footer-foreground: #f6f7f9;
   --footer-muted: oklch(1 0 0 / 0.68);
-  --footer-nav: rgb(52, 58, 70);
-  --footer-nav-muted: rgb(177, 186, 200);
-  --footer-input: rgb(52, 58, 70);
+  --footer-nav: #343a46;
+  --footer-nav-muted: #b1bac8;
+  --footer-input: #343a46;
   --footer-border: oklch(1 0 0 / 0.14);
   --footer-watermark: oklch(1 0 0 / 0.1);
   /* Figma watermark wordmark gradients (always on dark footer) */

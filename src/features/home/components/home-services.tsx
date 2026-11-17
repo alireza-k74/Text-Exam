@@ -15,9 +15,6 @@ const CARD_BOTTOM_SLANT = 10;
 /** Soft corner radius in 0–100 viewBox units. */
 const CARD_CORNER_R = 7;
 const CARD_VIEWBOX = "0 0 100 100";
-/** Figma service card fill. */
-const CARD_BG = "rgb(236, 238, 242)";
-
 /**
  * Service body silhouette: flat rounded top,
  * bottom-left lower than bottom-right.
@@ -72,7 +69,7 @@ function ServiceCard({ service }: { service: HomeService }) {
             className={cn(
               "max-w-full truncate text-[clamp(2.5rem,8vw,3.75rem)] leading-none font-bold tracking-tight",
               "text-foreground/[0.08]",
-              "[text-shadow:0_1px_2px_rgb(15_23_42_/_0.12),0_2px_8px_rgb(255_255_255_/_0.9),0_8px_28px_rgb(255_255_255_/_0.65)]",
+              "[text-shadow:var(--home-services-watermark-shadow)]",
               "[mask-image:var(--home-services-watermark-fade)] [-webkit-mask-image:var(--home-services-watermark-fade)]",
               "[mask-size:100%_100%] [mask-repeat:no-repeat]",
             )}
@@ -108,7 +105,7 @@ function ServiceCard({ service }: { service: HomeService }) {
         customViewBox={CARD_VIEWBOX}
         width="100%"
         height="auto"
-        background={CARD_BG}
+        background="var(--home-services-card)"
         className="relative z-0 flex w-full flex-1"
         clipContent
       >
