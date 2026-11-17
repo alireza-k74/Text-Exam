@@ -3769,15 +3769,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"geist@npm:^1.9.2":
-  version: 1.9.2
-  resolution: "geist@npm:1.9.2"
-  peerDependencies:
-    next: ">=13.2.0"
-  checksum: 8b136967deba63f7117ee2447457146a7e83148f46928a56f59f3d140dcdcb20186be48d9adeab07d24b2c381f8f40ee2dee6df28cfb0b55722057f620f0f68f
-  languageName: node
-  linkType: hard
-
 "generator-function@npm:^2.0.0":
   version: 2.0.1
   resolution: "generator-function@npm:2.0.1"
@@ -6835,7 +6826,6 @@ __metadata:
     eslint: ^9
     eslint-config-next: 16.4.6
     eslint-config-prettier: ^10.1.8
-    geist: ^1.9.2
     jsdom: ^31.0.1
     lucide-react: ^1.73.0
     motion: ^14.14.0
